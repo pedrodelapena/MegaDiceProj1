@@ -8,6 +8,8 @@
 -nodejs
 -SQL
 
+---
+
 '''
 	Inicialmente, deve-se rodar os arquivos localizados na pasta SQL Scripts. O arquivo que gera a base de dados é o Player_Base.sql e o arquivo playerbase_testdata.sql é utilizado para preencher a base com dados fictícios. 
 '''	
