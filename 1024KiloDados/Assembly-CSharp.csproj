@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{2775811F-47FB-172B-D032-492AC0657CD3}</ProjectGuid>
+    <ProjectGuid>{FCCCBD56-679A-21C7-B848-36D5CA159BCB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Classes\JsonHelper.cs" />
     <Compile Include="Assets\Scripts\Classes\Template.cs" />
     <Compile Include="Assets\Scripts\Classes\User.cs" />
+    <Compile Include="Assets\Scripts\Equip\InvHandlerEquip.cs" />
     <Compile Include="Assets\Scripts\Fabio.cs" />
     <Compile Include="Assets\Scripts\InventoryScreen\InvSlot.cs" />
     <Compile Include="Assets\Scripts\InvHandler.cs" />
@@ -82,16 +83,16 @@
     <Compile Include="Assets\Scripts\Trade\InvSlotTrade.cs" />
     <Compile Include="Assets\Scripts\Trade\TradeFinder.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>D:/UnityProjects/Insper/1024KiloDados (2)/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Jean Low/Documents/GitHub/MegaDiceProj1/1024KiloDados/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/UnityProjects/Insper/1024KiloDados (2)/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/Jean Low/Documents/GitHub/MegaDiceProj1/1024KiloDados/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/UnityProjects/Insper/1024KiloDados (2)/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/Jean Low/Documents/GitHub/MegaDiceProj1/1024KiloDados/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/UnityProjects/Insper/1024KiloDados (2)/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/Jean Low/Documents/GitHub/MegaDiceProj1/1024KiloDados/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.2.0f2/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

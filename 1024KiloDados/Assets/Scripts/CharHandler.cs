@@ -44,8 +44,25 @@ public class CharHandler : MonoBehaviour {
 
     public void DeleteCharacter(int id)
     {
-        int charId = charactersScreens[id].GetComponent<CharScreen>().charid;
-        StartCoroutine(DeleteCharacterRoutine(charId));
+        print("deleting char");
+        Character character= charactersScreens[id].GetComponent<CharScreen>().myCharacter;
+        StartCoroutine(DeleteCharacterRoutine(character));
+    }
+
+    public void EquipArmor(int id)
+    {
+        Character character = charactersScreens[id].GetComponent<CharScreen>().myCharacter;
+        Fabio.god.Equipchar = character;
+        Fabio.god.equipArmor = true;
+        Fabio.LoadScene("EquipItem");
+    }
+
+    public void EquipWeapon(int id)
+    {
+        Character character = charactersScreens[id].GetComponent<CharScreen>().myCharacter;
+        Fabio.god.Equipchar = character;
+        Fabio.god.equipArmor = false;
+        Fabio.LoadScene("EquipItem");
     }
 
     //Routines
@@ -86,9 +103,19 @@ public class CharHandler : MonoBehaviour {
         Fabio.LoadScene("Characters");
     }
 
-    IEnumerator DeleteCharacterRoutine(int charId)
+    IEnumerator DeleteCharacterRoutine(Character character)
     {
-        Fabio.god.rest.DeleteCharacter(charId);
+        if(character.armor != null)
+        {
+            StartCoroutine(Fabio.god.rest.ChangeItemStatus(character.armor, 0));
+        }
+        if (character.weapon != null)
+        {
+            StartCoroutine(Fabio.god.rest.ChangeItemStatus(character.weapon, 0));
+        }
+
+        Fabio.god.rest.DeleteCharacter(character.character_id);
+
         yield return new WaitForSeconds(0.1f); //wait a little then reload to show new spot
         Fabio.LoadScene("Characters");
     }

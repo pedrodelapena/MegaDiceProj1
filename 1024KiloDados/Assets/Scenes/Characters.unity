@@ -503,7 +503,7 @@ Prefab:
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -71
+      value: -80.51001
       objectReference: {fileID: 0}
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
@@ -513,7 +513,7 @@ Prefab:
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -195
+      value: -175.98
       objectReference: {fileID: 0}
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
@@ -545,14 +545,24 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114751535815785440, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
+        type: 2}
+      propertyPath: handler
+      value: 
+      objectReference: {fileID: 2058104837}
     - target: {fileID: 114311959246935334, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2058104837}
-    - target: {fileID: 114751535815785440, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
+    - target: {fileID: 114307589521635406, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
-      propertyPath: handler
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2058104837}
+    - target: {fileID: 114381530461995380, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2058104837}
     m_RemovedComponents: []
@@ -628,7 +638,7 @@ Prefab:
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -71
+      value: -80.526
       objectReference: {fileID: 0}
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
@@ -638,7 +648,7 @@ Prefab:
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -195
+      value: -175.94
       objectReference: {fileID: 0}
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
@@ -673,12 +683,12 @@ Prefab:
     - target: {fileID: 224914120840636340, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -41.13899
+      value: 58.8
       objectReference: {fileID: 0}
     - target: {fileID: 224914120840636340, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -152
+      value: -131.7
       objectReference: {fileID: 0}
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
@@ -726,7 +736,7 @@ Prefab:
     - target: {fileID: 114311959246935334, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DeleteCharacter
+      value: EquipWeapon
       objectReference: {fileID: 0}
     - target: {fileID: 114311959246935334, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
@@ -744,6 +754,31 @@ Prefab:
       value: 
       objectReference: {fileID: 12800000, guid: 95017e8be49b81b429cd28006dabaa4f,
         type: 3}
+    - target: {fileID: 114307589521635406, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2058104837}
+    - target: {fileID: 114307589521635406, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EquipArmor
+      objectReference: {fileID: 0}
+    - target: {fileID: 114381530461995380, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2058104837}
+    - target: {fileID: 114381530461995380, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeleteCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 114381530461995380, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed, type: 2}
   m_IsPrefabAsset: 0
@@ -821,7 +856,43 @@ MonoBehaviour:
   charid: 0
   ddWeapons: {fileID: 0}
   ddArmor: {fileID: 0}
+  myCharacter:
+    character_id: 0
+    login: 
+    strenght: 0
+    dexterity: 0
+    vigor: 0
+    inteligence: 0
+    wisdom: 0
+    charisma: 0
+    weapon: 0
+    armor: 0
+  armor:
+    item_id: 0
+    template_id: 0
+    login: 
+    equip: 0
+  weapon:
+    item_id: 0
+    template_id: 0
+    login: 
+    equip: 0
+  armorTemplate:
+    template_id: 0
+    item_name: 
+    item_type: 
+    amount_1: 0
+    amount_2: 0
+    rarity: 0
+  weaponTemplate:
+    template_id: 0
+    item_name: 
+    item_type: 
+    amount_1: 0
+    amount_2: 0
+    rarity: 0
   handler: {fileID: 0}
+  delay: 0.3
 --- !u!1001 &605420459
 Prefab:
   m_ObjectHideFlags: 0
@@ -882,7 +953,7 @@ Prefab:
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -71
+      value: -78.76999
       objectReference: {fileID: 0}
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
@@ -892,7 +963,7 @@ Prefab:
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: -195
+      value: -179.46
       objectReference: {fileID: 0}
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
@@ -927,12 +998,12 @@ Prefab:
     - target: {fileID: 224914120840636340, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -41.13899
+      value: 57.3
       objectReference: {fileID: 0}
     - target: {fileID: 224914120840636340, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -152
+      value: -135
       objectReference: {fileID: 0}
     - target: {fileID: 224612240984848976, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
@@ -980,7 +1051,7 @@ Prefab:
     - target: {fileID: 114311959246935334, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DeleteCharacter
+      value: EquipWeapon
       objectReference: {fileID: 0}
     - target: {fileID: 114311959246935334, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
         type: 2}
@@ -998,6 +1069,31 @@ Prefab:
       value: 
       objectReference: {fileID: 12800000, guid: 95017e8be49b81b429cd28006dabaa4f,
         type: 3}
+    - target: {fileID: 114307589521635406, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2058104837}
+    - target: {fileID: 114307589521635406, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EquipArmor
+      objectReference: {fileID: 0}
+    - target: {fileID: 114381530461995380, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2058104837}
+    - target: {fileID: 114381530461995380, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeleteCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 114381530461995380, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed, type: 2}
   m_IsPrefabAsset: 0
@@ -1033,7 +1129,43 @@ MonoBehaviour:
   charid: 0
   ddWeapons: {fileID: 0}
   ddArmor: {fileID: 0}
+  myCharacter:
+    character_id: 0
+    login: 
+    strenght: 0
+    dexterity: 0
+    vigor: 0
+    inteligence: 0
+    wisdom: 0
+    charisma: 0
+    weapon: 0
+    armor: 0
+  armor:
+    item_id: 0
+    template_id: 0
+    login: 
+    equip: 0
+  weapon:
+    item_id: 0
+    template_id: 0
+    login: 
+    equip: 0
+  armorTemplate:
+    template_id: 0
+    item_name: 
+    item_type: 
+    amount_1: 0
+    amount_2: 0
+    rarity: 0
+  weaponTemplate:
+    template_id: 0
+    item_name: 
+    item_type: 
+    amount_1: 0
+    amount_2: 0
+    rarity: 0
   handler: {fileID: 0}
+  delay: 0.6
 --- !u!114 &605420463 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114442013584619298, guid: d60cc7592fc7d1b4c9fdadecbb2a0bed,
@@ -2056,6 +2188,7 @@ MonoBehaviour:
   characters: []
   armors: []
   weapons: []
+  flag_weapons: 0
 --- !u!4 &2058104838
 Transform:
   m_ObjectHideFlags: 0

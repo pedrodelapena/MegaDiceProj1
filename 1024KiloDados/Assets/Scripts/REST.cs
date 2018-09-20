@@ -302,8 +302,53 @@ public class REST : MonoBehaviour {
 
     //Get Items from user END
 
+    //Get item from id
+    public Item item;
+    public void GetItemsById(int id, int asyncId)
+    {
+        StartCoroutine(GetItemByIdRoutine(id, asyncId));
+    }
+
+    IEnumerator GetItemByIdRoutine(int id, int asyncId)
+    {
+        string restUrl = "http://localhost:8001/api/item/id/" + id;
+        UnityWebRequest req = UnityWebRequest.Get(restUrl);
+
+        req.chunkedTransfer = false;
+        yield return req.SendWebRequest();
+
+        if (req.isHttpError || req.isNetworkError)
+        {
+            Debug.Log(req.error);
+        }
+        else
+        {
+            if (req.isDone)
+            {
+                string jsonResult = System.Text.Encoding.UTF8.GetString(req.downloadHandler.data);
+                Item[] result = JsonHelper.GetJsonArray<Item>(jsonResult);
+                if (result.Length > 0)
+                {
+                    item = result[0];
+                    print("finished");
+                    print(item.login);
+                }
+                else
+                {
+                    item = null;
+                    print("finished");
+                    print("Null");
+                }
+                asyncQueue[asyncId] = false;
+            }
+        }
+
+        print(req.ToString());
+        yield return null;
+    }
+    //Get item from id END
+
     //Get weapons from current user
-    //Get Items from user
     public Item[] userWeapons;
     public void GetWeaponsFromUser(int asyncId)
     {
@@ -519,7 +564,6 @@ public class REST : MonoBehaviour {
                 }
             }
         }
-
     }
     //Trade Item END
 
@@ -544,6 +588,7 @@ public class REST : MonoBehaviour {
             Debug.Log(req.error);
         }
         flag_continue = true;
+        flag_continue_equip = true;
     }
 
     IEnumerator Rollback()
@@ -612,6 +657,164 @@ public class REST : MonoBehaviour {
     }
     //Functions for Trade END
 
+
+    //Equip Item
+    bool flag_error_equip = false;
+    bool flag_continue_equip;
+    public void EquipItem(int itemId, Character character, bool armor)
+    {
+        flag_error_equip = false;
+        flag_continue_equip = true;
+        StartCoroutine(EquipItemRoutine(itemId, character, armor));
+    }
+
+    IEnumerator EquipItemRoutine(int itemId, Character character, bool armor)
+    {
+
+        StartCoroutine(Start_Transaction());
+        flag_continue_equip = false;
+        print("start transaction");
+        yield return new WaitUntil(() => flag_continue_equip);
+        if (flag_error_equip)
+        {
+            StartCoroutine(Rollback());
+            print("ROLLBACK");
+        }
+        else
+        {
+            //save item id to future use
+            int oldItemid = (armor ? character.armor : character.weapon);
+            print("Got item id" + oldItemid);
+
+            StartCoroutine(AtachItemToChar(itemId, character.character_id, armor));
+            flag_continue_equip = false;
+            yield return new WaitUntil(() => flag_continue_equip);
+            print("On atachitem");
+            if (flag_error_equip)
+            {
+                StartCoroutine(Rollback());
+                print("ROLLBACK");
+            }
+            else
+            {
+
+                StartCoroutine(ChangeItemStatus(oldItemid, 0));
+                flag_continue_equip = false;
+                yield return new WaitUntil(() => flag_continue_equip);
+                print("On change status old");
+                if (flag_error_equip)
+                {
+                    StartCoroutine(Rollback());
+                    print("ROLLBACK");
+                }
+
+                else
+                {
+                    StartCoroutine(ChangeItemStatus(itemId, 1));
+                    flag_continue_equip = false;
+                    yield return new WaitUntil(() => flag_continue_equip);
+                    print("On change status new");
+                    if (flag_error_equip)
+                    {
+                        StartCoroutine(Rollback());
+                        print("ROLLBACK");
+                    }
+                    else
+                    {
+                        StartCoroutine(Commit());
+                        print("Commit");
+                    }
+                }
+            }
+        }
+
+    }
+    //Equip Item END
+
+    //Functions for Item Equip
+    IEnumerator AtachItemToChar(int itemId, int charId, bool armor)
+    {
+        //Stringizachions
+        WWWForm form = new WWWForm();
+
+        ///newcharacter/:ownername/:str/:dex/:vig/:int/:wis/:cha
+        string restUrl = "http://localhost:8001/api/equip" + (armor ? "armor/" : "weapon/") + charId + "/" + itemId;
+
+        print(restUrl);
+        UnityWebRequest req = UnityWebRequest.Post(restUrl, form);
+
+        req.chunkedTransfer = false;
+        yield return req.SendWebRequest();
+
+        if (req.isHttpError || req.isNetworkError)
+        {
+            flag_error_equip = true;
+            Debug.Log(req.error);
+        }
+        flag_continue_equip = true;
+    }
+
+    public IEnumerator ChangeItemStatus(int itemId, int status)
+    {
+        //Stringizachions
+        WWWForm form = new WWWForm();
+
+        ///newcharacter/:ownername/:str/:dex/:vig/:int/:wis/:cha
+        string restUrl = "http://localhost:8001/api/equiped/" + itemId + "/" + status;
+
+        print(restUrl);
+        UnityWebRequest req = UnityWebRequest.Post(restUrl, form);
+
+        req.chunkedTransfer = false;
+        yield return req.SendWebRequest();
+
+        if (req.isHttpError || req.isNetworkError)
+        {
+            flag_error_equip = true;
+            Debug.Log(req.error);
+        }
+        flag_continue_equip = true;
+    }
+
+    public Item[] userEquipItems;
+    public void GetFreeEquipFromUser(int asyncId)
+    {
+        StartCoroutine(GetFreeEquipFromUserRoutine(asyncId));
+    }
+
+    IEnumerator GetFreeEquipFromUserRoutine(int asyncId)
+    {
+        string restUrl = "http://localhost:8001/api/item/" + Fabio.user.login + "/" + (Fabio.god.equipArmor ? "armor" : "weapons");
+        UnityWebRequest req = UnityWebRequest.Get(restUrl);
+        print(restUrl);
+        req.chunkedTransfer = false;
+
+        yield return req.SendWebRequest();
+
+        if (req.isHttpError || req.isNetworkError)
+        {
+            Debug.Log(req.error);
+        }
+        else
+        {
+            if (req.isDone)
+            {
+                string jsonResult = System.Text.Encoding.UTF8.GetString(req.downloadHandler.data);
+                userItems = JsonHelper.GetJsonArray<Item>(jsonResult);
+                asyncQueue[asyncId] = false;
+
+                foreach (Item i in userItems)
+                {
+                    print(i.item_id);
+                }
+
+            }
+        }
+
+        print(req.ToString());
+        yield return null;
+    }
+    //Functions for Item Equip END
 
 
 }

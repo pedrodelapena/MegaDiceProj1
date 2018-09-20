@@ -13,6 +13,9 @@ public class Fabio : MonoBehaviour {
     public int tradeid1, tradeid2;
     public User tradeUser;
 
+    public Character Equipchar;
+    public bool equipArmor;
+
 
     
 

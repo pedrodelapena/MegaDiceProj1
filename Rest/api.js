@@ -90,6 +90,30 @@ router.get(
 
 )
 
+router.get(
+	'/character/:charid', //Get characters from ID
+	async(req, res, next) => {
+		
+		try {
+			var command = 'SELECT * FROM characters WHERE characters.characters_id = "' + req.params.charid + '";'
+			//res.send(command) //test to see command
+			database.query(command,(err, result)=> {
+				if(err){
+					res.send("Error in SQL section")
+					throw err
+				} else {
+					res.status(200).json({result})
+				}
+			})
+			
+		} catch (error) {
+			console.log("DEU RUIM")
+			res.status(400).json({error})
+		}
+	}
+
+)
+
 router.post( //inserir dados no sql
 	'/newcharacter/:ownername/:str/:dex/:vig/:int/:wis/:cha', //add a new character with setted values
 	async(req, res, next) => {
@@ -174,7 +198,7 @@ router.post( //alterar uma tributo de um objeto (coluna) //(Virou Put pq unity)
 	}
 )
 
-router.patch( //alterar uma tributo de um objeto (coluna)
+router.post( //alterar uma tributo de um objeto (coluna)
 	'/equipweapon/:charid/:itemid', //called to update the character weapon
 	async(req, res, next) => {
 		try {
@@ -195,7 +219,7 @@ router.patch( //alterar uma tributo de um objeto (coluna)
 	}
 )
 
-router.patch( //alterar uma tributo de um objeto (coluna)
+router.post( //alterar uma tributo de um objeto (coluna)
 	'/equiparmor/:charid/:itemid', //called to update the character armor
 	async(req, res, next) => {
 		try {
@@ -215,6 +239,28 @@ router.patch( //alterar uma tributo de um objeto (coluna)
 		}
 	}
 )
+
+router.post( //alterar uma tributo de um objeto (coluna)
+	'/equiped/:itemid/:status', //called to change equip status from item
+	async(req, res, next) => {
+		try {
+			var command = "UPDATE items SET equip = " + req.params.status + " WHERE Items.item_id = " + req.params.itemid + ";"
+			//res.send(command) //test to see command
+			database.query(command,(err, result)=> {
+				if(err){
+					res.send(command + " is wrong") //test to see command
+					throw err
+				} else {
+					res.status(200).json({result})
+				}
+			})
+		} catch (error) {
+			console.log("DEU RUIM")
+			res.status(400).json({error})
+		}
+	}
+)
+
 
 
 
@@ -244,7 +290,7 @@ router.post( //inserir dados no sql
 	'/newitem/:template/:login/:date', //add a new item to user
 	async(req, res, next) => {
 		try {
-			var command = "INSERT INTO items VALUES (0," + req.params.template + ", '" + req.params.login + "',true,'" + req.params.date + "');" 
+			var command = "INSERT INTO items VALUES (0," + req.params.template + ", '" + req.params.login + "',false,'" + req.params.date + "');" 
 			database.query(command,(err, result)=> {
 				if(err){
 					res.send(command + " is wrong") //test to see command
@@ -298,11 +344,12 @@ router.get(
 		}
 	}
 )
+
 router.get(
-	'/item/:username/weapons', //Get items from username that are of type weapons
+	'/item/id/:itemid', //Get items from Id
 	async(req, res, next) => {
 		try {
-			var command = 'Select * from items INNER JOIN item_templates ON items.template_id = item_templates.template_id Where item_templates.item_type = "weapon" AND items.login = "' + req.params.username + '";'
+			var command = 'SELECT * FROM items WHERE items.item_id = ' + req.params.itemid + ';'
 			//res.send(command) //test to see command
 			database.query(command,(err, result)=> {
 				if(err){
@@ -319,15 +366,39 @@ router.get(
 		}
 	}
 )
+
 router.get(
-	'/item/:username/armor', //Get items from username that are of type armor
+	'/item/:username/weapons', //Get items from username that are of type weapons and not equiped
 	async(req, res, next) => {
 		try {
-			var command = 'Select * from items INNER JOIN item_templates ON items.template_id = item_templates.template_id Where item_templates.item_type = "armor" AND items.login = "' + req.params.username + '";'
+			var command = 'Select * from items INNER JOIN item_templates ON items.template_id = item_templates.template_id Where item_templates.item_type = "weapon" AND items.equip = 0 AND items.login = "' + req.params.username + '";'
 			//res.send(command) //test to see command
 			database.query(command,(err, result)=> {
 				if(err){
-					res.send("Error in SQL section")
+					res.send(command + " is wrong") //test to see command
+					//res.send("Error in SQL section")
+					throw err
+				} else {
+					res.status(200).json({result})
+				}
+			})
+			
+		} catch (error) {
+			console.log("DEU RUIM")
+			res.status(400).json({error})
+		}
+	}
+)
+router.get(
+	'/item/:username/armor', //Get items from username that are of type armor and not equiped
+	async(req, res, next) => {
+		try {
+			var command = 'Select * from items INNER JOIN item_templates ON items.template_id = item_templates.template_id Where item_templates.item_type = "armor" AND items.equip = 0 AND items.login = "' + req.params.username + '";'
+			//res.send(command) //test to see command
+			database.query(command,(err, result)=> {
+				if(err){
+					res.send(command + " is wrong") //test to see command
+					//res.send("Error in SQL section")
 					throw err
 				} else {
 					res.status(200).json({result})

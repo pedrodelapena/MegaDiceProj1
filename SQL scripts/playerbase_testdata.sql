@@ -16,12 +16,12 @@ INSERT INTO item_templates VALUES (0,'Lesser Restoration Potion','Consumable',20
 
 SELECT * FROM item_templates;
 
-INSERT INTO items VALUES (0,1,'lightclawjl',true,'2018/08/28');
-INSERT INTO items VALUES (0,2,'lightclawjl',true,'2018/08/28');
-INSERT INTO items VALUES (0,3,'pedrodelapena',true,'2018/08/28');
-INSERT INTO items VALUES (0,4,'pedrodelapena',true,'2018/08/28');
-INSERT INTO items VALUES (0,5,'lightclawjl',true,'2018/08/28');
-INSERT INTO items VALUES (0,6,'pedrodelapena',true,'2018/08/28');
+INSERT INTO items VALUES (0,1,'lightclawjl',false,'2018/08/28');
+INSERT INTO items VALUES (0,2,'lightclawjl',false,'2018/08/28');
+INSERT INTO items VALUES (0,3,'pedrodelapena',false,'2018/08/28');
+INSERT INTO items VALUES (0,4,'pedrodelapena',false,'2018/08/28');
+INSERT INTO items VALUES (0,5,'lightclawjl',false,'2018/08/28');
+INSERT INTO items VALUES (0,6,'pedrodelapena',false,'2018/08/28');
 
 SELECT * FROM items;
 
