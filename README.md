@@ -4,7 +4,6 @@
 ## Manual de instalação e uso do projeto
 ### Requisitos:
 
-```
 -Unity Engine
 ```
 -NPM
