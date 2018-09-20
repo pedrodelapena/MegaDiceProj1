@@ -17,4 +17,4 @@
 
 ## Documentação, Dicionário, Diagramas e REST API
 
-As especificações estão em um documento separado, que pode ser encontrado [neste link](/doc/Dicionario_Database.docx).
+As especificações estão em um documento separado, que pode ser encontrado [neste link](/doc/Dicionario_Database.pdf).
