@@ -4,14 +4,10 @@
 ## Manual de instalação e uso do projeto
 ### Requisitos:
 
--Unity Engine
-```
--NPM
-```
--nodejs
-```
--SQL
-```
+-Unity Engine  
+-NPM  
+-nodejs  
+-SQL  
 
 ---
 
